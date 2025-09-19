@@ -8,6 +8,10 @@ applyTo: 'e2e/*.spec.ts,e2e/**/*.spec.ts'
 
 Ce fichier contient les instructions et bonnes pratiques pour créer des tests end-to-end (e2e) avec Jest dans notre backend NestJS. Les tests e2e vérifient le comportement complet de l'application en simulant des requêtes HTTP réelles.
 
+## Règles
+
+- Soit critique dans la rédaction des tests, certains comportement peuvent provenir d'un manquement / d'une erreur / d'une mauvaise gestion d'erreur ou d'un manque de gestion d'erreur dans le code et non dans la suite de test. Tu es un expert developpeur et de test, soit critique sur la pertinance et la logique d'un test.
+
 ## Architecture des tests E2E
 
 ### Structure des fichiers

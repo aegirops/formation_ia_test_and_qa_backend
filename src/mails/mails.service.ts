@@ -31,8 +31,27 @@ export class MailsService {
 
     // Handle take, skip to number
     try {
-      take = parseInt(query.take, 10);
-      skip = parseInt(query.skip, 10);
+      if (query.take !== undefined) {
+        take = parseInt(query.take, 10);
+        if (isNaN(take)) {
+          throw new Error(`Invalid take parameter: ${query.take}`);
+        }
+        if (take <= 0) {
+          throw new Error(
+            `Take must be a positive number (minimum 1): ${take}`,
+          );
+        }
+      }
+
+      if (query.skip !== undefined) {
+        skip = parseInt(query.skip, 10);
+        if (isNaN(skip)) {
+          throw new Error(`Invalid skip parameter: ${query.skip}`);
+        }
+        if (skip < 0) {
+          throw new Error(`Skip must be a positive number or zero: ${skip}`);
+        }
+      }
     } catch (error) {
       this.logger.error(`Error parsing take, skip: ${error}`);
       throw new BadRequestException('Invalid take, skip');
